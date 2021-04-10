@@ -1,4 +1,4 @@
-# quiz-challenge
+# Coding Quiz 
 A coding challenge quiz made to test the applicants skills.
 
 * The quiz will start when the applicant presses the start button.

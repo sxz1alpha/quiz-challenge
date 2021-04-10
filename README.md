@@ -3,11 +3,15 @@ A coding challenge quiz made to test the applicants skills.
 
 * The quiz will start when the applicant presses the start button.
 
-* When the start button is pushed a countdown timer wil begin
+* When the start button is pushed a countdown timer will begin
 
-* For every wrong answer the timer will lose time.
+* The quiz will cycle through an array of questions
 
-* When the countdown timer function reaches zero the quiz will end.
+* For every correct answer the user will recieve 25 points 
+
+* For every wrong answer the timer will lose time 25 seconds.
+
+* When the countdown timer function reaches zero or when the user answers the final question the quiz will end.
 
 * A persons score will be determined by how much time is left on the timer at the end as well as how many questions the quiz taker answered correctly.
 

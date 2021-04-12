@@ -1,0 +1,20 @@
+#main {
+    margin: 25%;
+}
+
+#timer {
+    margin: 0 25px 0 auto;
+}
+
+#view {
+    margin: 0 0 0 25px;
+}
+.answer-btn {
+    width: 100%;
+    margin: 2px auto 2px auto;
+}
+.box {
+    margin: 0 auto;
+}
+
+

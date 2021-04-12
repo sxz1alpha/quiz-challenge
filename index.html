@@ -11,11 +11,18 @@
 <body>
    
     <header class="flex-row d-flex bg-dark">
-        <h2 class="mr-auto d-flex flex-column text-light">View high scores</h2>
+        <h2 id="view" class="mr-auto d-flex flex-column text-light">View high scores</h2>
         <h2 class="d-flex ml-auto flex-column text-light"><span id="timer"></span></h2>
     </header>
-    <main id="main" class="d-flex justify-content-center align-items-center">
-        <button id="start-btn" class="btn btn-dark">START</button>
+    <main id="main" class="d-flex justify-content-center align-items-center col-6">
+        <div class="container">
+            <div class="row">
+                <p class="qdisplay">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate cum aperiam eaque tempore nobis optio quam, perferendis mollitia voluptatem autem nemo ad quibusdam itaque provident quidem voluptatibus ex magnam esse?</p>
+            </div>
+            <div class="row answer-block justify-content-center">
+                <button id="start-btn" class="btn btn-dark">START</button>
+            </div>
+        </div> 
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="./assets/js/script.js"></script>

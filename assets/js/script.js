@@ -1,23 +1,24 @@
-var time = 75000;
-var score = points + time
+// array used to store user names
+var users = {};
+var time = 0;
 var points = 0;
 var questionNumber = 1;
-
-function countDown() {
-    time--;
-    document.getElementById("timer").innerHTML = time
-    if (time > 0) {
-        setTimeout(endQuiz, time);
-    }
-};
-
-
+var score = points + time
 
 // add a funtion for the quiz start button
 $("#start-btn").on("click", function() {
     console.log("Quiz started");
+    time = 75;
     startQuiz();
-    countDown();
+    //countdown timer for the quiz.
+    var interval = setInterval(function(){
+        document.getElementById('timer').innerHTML=time;
+        time--;
+        if (time === 0 || time < 0) {
+          clearInterval(interval)
+          endQuiz()
+        }
+      }, 1000);
 });
 
 // add a function to start the quiz
@@ -54,15 +55,20 @@ var questions = [
     }
 ]
 
+// generates questions and the corosponding css
 function createQuestion(questionId) {
     //pulls a question from the questions array and generates a div to place it on
     var question = questions[questionId];
     var questionDiv = document.createElement("div");
     questionDiv.setAttribute("id", "quesiton" + questionId);
-    questionDiv.setAttribute("class", "d-flex")
+    questionDiv.setAttribute("class", "d-flex row");
+    
+    var answerDiv = document.createElement("div");
+    answerDiv.setAttribute("id", "answer-block");
+    answerDiv.setAttribute("class", "col");
     //creates an h1 element inside the generated div
-    var questionH1 = document.createElement("h1");
-    questionH1.setAttribute("class", "question-title");
+    var questionH1 = document.createElement("h4");
+    questionH1.setAttribute("class", "question-title flex-row");
     questionH1.innerHTML = question.title;
     questionDiv.appendChild(questionH1);
     
@@ -73,20 +79,19 @@ function createQuestion(questionId) {
         answerButton.addEventListener("click", function() {
             answerChecker(question.choices[answer], question.answer); 
         });
-        questionDiv.appendChild(answerButton);
+        answerDiv.appendChild(answerButton);
     };
     var mainSection = document.getElementById("main");
     mainSection.innerHTML = "";
     mainSection.appendChild(questionDiv)
+    mainSection.appendChild(answerDiv)
 }
-
-
 
 // make a function that subtracts time when the wrong answer is selected should also cycle
 //through questions down the array
 
 var wrongAnswer = function() {
-    time = time - 15000;
+    time = time - 15;
 }
 
 // make a function that adds points when the right answer is selected should also cycle
@@ -104,9 +109,17 @@ var endQuiz = function() {
 
 // make a function to call a popup window thats displays the name and score of previous users ranked from 
 //highes value to lowest
+$("#view").on("click", function() {
+    var userLi = $("<li>").addClass("user-list");
+    $("main").append(userLi)
+    console.log("view")
+})
+
+// loads high scores from local storage
 
 // Make an h3 flasher thats says if an answer was correct or incorrect
 
+// checks if an answer is correct and runs the corrosponding code
 var answerChecker = function(selectedAnswer, correctAnswer) {
     if (selectedAnswer === correctAnswer) {
         rightAnswer();
@@ -120,3 +133,4 @@ var answerChecker = function(selectedAnswer, correctAnswer) {
     endQuiz();
     }
 }
+

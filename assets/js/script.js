@@ -3,14 +3,21 @@ var score = points + time
 var points = 0;
 var questionNumber = 1;
 
+function countDown() {
+    time--;
+    document.getElementById("timer").innerHTML = time
+    if (time > 0) {
+        setTimeout(endQuiz, time);
+    }
+};
 
 
 
 // add a funtion for the quiz start button
 $("#start-btn").on("click", function() {
-    console.log("Quiz started")
-    startQuiz()
-    //needs timer start function
+    console.log("Quiz started");
+    startQuiz();
+    countDown();
 });
 
 // add a function to start the quiz
@@ -79,7 +86,7 @@ function createQuestion(questionId) {
 //through questions down the array
 
 var wrongAnswer = function() {
-    time = time - 15;
+    time = time - 15000;
 }
 
 // make a function that adds points when the right answer is selected should also cycle
